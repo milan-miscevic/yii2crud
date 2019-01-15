@@ -1,0 +1,8 @@
+{
+    "name": "milan-miscevic/yii2crud",
+    "autoload": {
+        "psr-4": {
+            "mmm\\yii2crud\\": "src/"
+        }
+    }
+}
