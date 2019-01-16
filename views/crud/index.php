@@ -15,12 +15,14 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php foreach ($entities as $entity) { ?>
             <tr>
                 <td><?= $entity->identifier ?></td>
-                <td class="align-right">
-                    <a href="<?= Url::to(["//{$name}/view", 'id' => $entity->id]); ?>">View</a>
-                    -
-                    <a href="<?= Url::to(["//{$name}/edit", 'id' => $entity->id]); ?>">Edit</a>
-                    -
-                    <a href="<?= Url::to(["//{$name}/delete", 'id' => $entity->id]); ?>">Delete</a>
+                <td>
+                    <span class="pull-right">
+                        <a href="<?= Url::to(["//{$name}/view", 'id' => $entity->id]); ?>">View</a>
+                        -
+                        <a href="<?= Url::to(["//{$name}/edit", 'id' => $entity->id]); ?>">Edit</a>
+                        -
+                        <a href="<?= Url::to(["//{$name}/delete", 'id' => $entity->id]); ?>">Delete</a>
+                    </span>
                 </td>
             </tr>
         <?php } ?>
