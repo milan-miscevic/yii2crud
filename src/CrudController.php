@@ -23,7 +23,6 @@ class CrudController extends Controller
     public function actionIndex()
     {
         return $this->renderOrFallback(
-            $this->name,
             'index',
             [
                 'name' => $this->name,
@@ -42,7 +41,6 @@ class CrudController extends Controller
         }
 
         return $this->renderOrFallback(
-            $this->name,
             'view',
             [
                 'name' => $this->name,
@@ -66,7 +64,6 @@ class CrudController extends Controller
         }
 
         return $this->renderOrFallback(
-            $this->name,
             'save',
             [
                 'name' => $this->name,
@@ -99,7 +96,6 @@ class CrudController extends Controller
         }
 
         return $this->renderOrFallback(
-            $this->name,
             'save',
             [
                 'name' => $this->name,
@@ -130,7 +126,6 @@ class CrudController extends Controller
         }
 
         return $this->renderOrFallback(
-            $this->name,
             'delete',
             [
                 'name' => $this->name,
@@ -139,10 +134,10 @@ class CrudController extends Controller
         );
     }
 
-    private function renderOrFallback($id, $view, $params)
+    private function renderOrFallback($view, $params)
     {
         try {
-            return $this->render("//{$id}/{$view}", $params);
+            return $this->render("//{$this->name}/{$view}", $params);
         } catch (ViewNotFoundException $ex) {
             return $this->render($view, $params);
         }
