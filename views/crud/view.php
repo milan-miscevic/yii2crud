@@ -22,4 +22,5 @@ $this->params['breadcrumbs'][] = $entity->identifier;
     </table>
 
     <a href="<?= Url::to(["//{$name}/edit", 'id' => $entity->id]); ?>" class="btn btn-primary">Edit</a>
+    <a href="<?= Url::to(["//{$name}/delete", 'id' => $entity->id]); ?>" class="btn btn-primary">Delete</a>
 </div>
