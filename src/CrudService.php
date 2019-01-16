@@ -19,9 +19,45 @@ class CrudService
         return $this->activeRecordClass;
     }
 
-    public function selectAll()
+    public function selectAll($params = null)
     {
-        return call_user_func([$this->activeRecordClass, 'find'])->all();
+        $query = call_user_func([$this->activeRecordClass, 'find']);
+
+        if ($params !== null) {
+            $query = $this->assignQueryParams($query, $params);
+        }
+
+        return $query->all();
+    }
+
+    public function select($conditions, $params = null)
+    {
+        $query = call_user_func([$this->activeRecordClass, 'find'])
+            ->where($conditions);
+
+        if ($params !== null) {
+            $query = $this->assignQueryParams($query, $params);
+        }
+
+        return $query->all();
+    }
+
+    protected function assignQueryParams($query, $params)
+    {
+        if ($params->orderBy !== null) {
+            $query->orderBy($params->orderBy);
+        }
+        if ($params->limit !== null) {
+            $query->limit($params->limit);
+        }
+        if ($params->offset !== null) {
+            $query->offset($params->offset);
+        }
+        if ($params->with !== null) {
+            $query->with($params->with);
+        }
+
+        return $query;
     }
 
     public function selectOne($conditions)
@@ -33,11 +69,6 @@ class CrudService
         } else {
             return $entity;
         }
-    }
-
-    public function select($conditions)
-    {
-        return call_user_func([$this->activeRecordClass, 'findAll'], $conditions);
     }
 
     public function add($entity)
