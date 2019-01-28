@@ -12,8 +12,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div>
     <table class="table table-striped table-hover table-condensed">
+        <tr>
+            <th>ID</th>
+            <th>Identifier</th>
+            <th></th>
+        </tr>
         <?php foreach ($entities as $entity) { ?>
             <tr>
+                <td><?= $entity->id ?></td>
                 <td><?= $entity->identifier ?></td>
                 <td>
                     <span class="pull-right">
