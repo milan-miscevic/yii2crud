@@ -14,9 +14,9 @@ class CrudService
         $this->activeRecordClass = 'app\\models\\' . Inflector::camelize($name);
     }
 
-    public function getActiveRecordClass()
+    public function createNewEntity()
     {
-        return $this->activeRecordClass;
+        return new $this->activeRecordClass();
     }
 
     public function selectAll($params = null)

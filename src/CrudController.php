@@ -56,8 +56,7 @@ class CrudController extends Controller
 
         if ($form->load(Yii::$app->request->post())) {
             $data = $form->getAttributes();
-            $activeRecordClass = $this->service->getActiveRecordClass();
-            $entity = new $activeRecordClass();
+            $entity = $this->service->createNewEntity();
             $entity->setAttributes($data, false);
             $this->service->add($entity);
             return $this->redirect(["//{$this->name}/index"]);
