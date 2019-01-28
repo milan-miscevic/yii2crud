@@ -5,8 +5,7 @@
 use yii\helpers\Inflector;
 use yii\helpers\Url;
 
-$this->title = Inflector::camelize($name);
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = Inflector::camelize($name);
 
 ?>
 

@@ -6,8 +6,7 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Inflector;
 
-$this->title = Inflector::camelize($name);
-$this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ["//{$name}"]];
+$this->params['breadcrumbs'][] = ['label' => Inflector::camelize($name), 'url' => ["//{$name}"]];
 $this->params['breadcrumbs'][] = isset($entity) ? $entity->identifier : 'New';
 
 ?>
