@@ -27,7 +27,7 @@ class CrudController extends Controller
             'index',
             [
                 'name' => $this->name,
-                'entities' => $this->service->selectAll(),
+                'entities' => $this->service->select(),
             ]
         );
     }
