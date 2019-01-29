@@ -19,27 +19,19 @@ class CrudService
         return new $this->activeRecordClass();
     }
 
-    public function selectAll($params = null)
+    public function select($where = null, $queryParams = null)
     {
         $query = call_user_func([$this->activeRecordClass, 'find']);
 
-        if ($params !== null) {
-            $query = $this->assignQueryParams($query, $params);
+        if ($where !== null) {
+            $query->where($where);
         }
 
-        return $query->all();
-    }
-
-    public function select($conditions, $params = null)
-    {
-        $query = call_user_func([$this->activeRecordClass, 'find'])
-            ->where($conditions);
-
-        if ($params !== null) {
-            $query = $this->assignQueryParams($query, $params);
+        if ($queryParams !== null) {
+            $query = $this->assignQueryParams($query, $queryParams);
         }
 
-        return $query->all();
+        return $query;
     }
 
     protected function assignQueryParams($query, $params)
@@ -58,6 +50,11 @@ class CrudService
         }
 
         return $query;
+    }
+
+    public function selectAll($where = null, $params = null)
+    {
+        return $this->select($where, $params)->all();
     }
 
     public function selectOne($conditions)
