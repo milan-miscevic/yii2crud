@@ -2,10 +2,10 @@
 
 namespace mmm\yii2crud;
 
-use Exception;
 use Yii;
 use mmm\yii2crud\exception\NotFound;
 use yii\base\ViewNotFoundException;
+use yii\helpers\Inflector;
 use yii\web\Controller;
 
 class CrudController extends Controller
@@ -15,6 +15,8 @@ class CrudController extends Controller
 
     public function init()
     {
+        parent::init();
+
         $this->name = $this->id;
         $this->id = 'crud';
         $this->view = Yii::$container->get('CrudView', [$this->name]);
@@ -52,8 +54,7 @@ class CrudController extends Controller
 
     public function actionAdd()
     {
-        $formClass = "app\\form\\{$this->name}";
-        $form = new $formClass();
+        $form = $this->createNewForm();
 
         if ($form->load(Yii::$app->request->post())) {
             $data = $form->getAttributes();
@@ -75,8 +76,7 @@ class CrudController extends Controller
     public function actionEdit()
     {
         $id = Yii::$app->request->get('id');
-        $formClass = "app\\form\\{$this->name}";
-        $form = new $formClass();
+        $form = $this->createNewForm();
 
         try {
             $entity = $this->service->selectOne($id);
@@ -132,6 +132,13 @@ class CrudController extends Controller
                 'entity' => $entity,
             ]
         );
+    }
+
+    private function createNewForm()
+    {
+        $formClass = 'app\\form\\' . Inflector::camelize($this->name);
+
+        return new $formClass();
     }
 
     private function renderOrFallback($view, $params)
