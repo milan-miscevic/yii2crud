@@ -3,7 +3,6 @@
 namespace mmm\yii2crud;
 
 use Yii;
-use mmm\yii2crud\CrudView;
 use yii\base\BootstrapInterface;
 use yii\base\Module as YiiModule;
 use yii\helpers\Inflector;
@@ -29,15 +28,6 @@ class Module extends YiiModule implements BootstrapInterface
 
         $this->setViewPath($this->getBasePath() . '\\..\\views\\');
         Yii::$container->set('CrudService', 'mmm\\yii2crud\\CrudService');
-
-        Yii::$container->set('CrudView', function ($container, $params, $config) {
-            $viewClass = '\\app\\view\\' . Inflector::camelize($params[0]);
-            if (class_exists($viewClass)) {
-                return new $viewClass();
-            } else {
-                return new CrudView();
-            }
-        });
     }
 
     public function setCruds($cruds)

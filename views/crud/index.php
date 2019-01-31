@@ -9,7 +9,8 @@ use yii\helpers\Html;
 use yii\helpers\Inflector;
 use yii\helpers\Url;
 
-$this->params['breadcrumbs'][] = Inflector::camelize($name);
+$this->title = Inflector::camelize($name);
+$this->params['breadcrumbs'][] = $this->title;
 
 $provider = new ActiveDataProvider([
     'query' => $entities,

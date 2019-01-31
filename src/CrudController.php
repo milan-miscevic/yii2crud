@@ -19,7 +19,6 @@ class CrudController extends Controller
 
         $this->name = $this->id;
         $this->id = 'crud';
-        $this->view = Yii::$container->get('CrudView', [$this->name]);
         $this->service = Yii::$container->get('CrudService', [$this->name]);
     }
 
