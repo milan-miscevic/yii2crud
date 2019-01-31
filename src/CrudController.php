@@ -25,11 +25,19 @@ class CrudController extends Controller
 
     public function actionIndex()
     {
+        $form = $this->createNewForm();
+        $entities = $this->service->select();
+
+        if ($form->load(Yii::$app->request->getQueryParams())) {
+            $entities->andFilterWhere($form->getAttributes());
+        }
+
         return $this->renderOrFallback(
             'index',
             [
                 'name' => $this->name,
-                'entities' => $this->service->select(),
+                'entities' => $entities,
+                'form' => $form,
             ]
         );
     }

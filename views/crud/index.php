@@ -24,6 +24,7 @@ $provider = new ActiveDataProvider([
 
 $grid = new GridView([
     'dataProvider' => $provider,
+    'filterModel' => $form,
     'tableOptions' => [
         'class' => 'table table-striped table-bordered table-hover table-condensed'
     ],
