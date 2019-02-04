@@ -14,7 +14,7 @@ $name = $this->params['crud']['name'];
 $this->title = Inflector::camelize($name);
 $this->params['breadcrumbs'][] = $this->title;
 
-$provider = new ActiveDataProvider([
+$defaultProviderConfig = [
     'query' => $entities,
     'pagination' => [
         'pageSize' => 50,
@@ -23,15 +23,29 @@ $provider = new ActiveDataProvider([
     'sort' => [
         'route' => $name,
     ],
-]);
+];
 
-$grid = new GridView([
+$this->params['crud']['provider'] = array_replace_recursive(
+    $defaultProviderConfig,
+    $this->params['crud']['provider'] ?? []
+);
+
+$provider = new ActiveDataProvider($this->params['crud']['provider']);
+
+$defaultGridConfig = [
     'dataProvider' => $provider,
     'filterModel' => $form,
     'tableOptions' => [
         'class' => 'table table-striped table-bordered table-hover table-condensed'
     ],
-]);
+];
+
+$this->params['crud']['grid'] = array_replace_recursive(
+    $defaultGridConfig,
+    $this->params['crud']['grid'] ?? []
+);
+
+$grid = new GridView($this->params['crud']['grid']);
 
 $actionColumn = new ActionColumn([
     'grid' => $grid,
