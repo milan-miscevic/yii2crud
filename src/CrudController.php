@@ -18,6 +18,7 @@ class CrudController extends Controller
         parent::init();
 
         $this->name = $this->id;
+        $this->getView()->params['crud']['name'] = $this->id;
         $this->id = 'crud';
         $this->service = Yii::$container->get('CrudService', [$this->name]);
     }
@@ -34,7 +35,6 @@ class CrudController extends Controller
         return $this->renderOrFallback(
             'index',
             [
-                'name' => $this->name,
                 'entities' => $entities,
                 'form' => $form,
             ]
@@ -53,7 +53,6 @@ class CrudController extends Controller
         return $this->renderOrFallback(
             'view',
             [
-                'name' => $this->name,
                 'entity' => $entity,
             ]
         );
@@ -74,7 +73,6 @@ class CrudController extends Controller
         return $this->renderOrFallback(
             'save',
             [
-                'name' => $this->name,
                 'model' => $form,
             ]
         );
@@ -105,7 +103,6 @@ class CrudController extends Controller
         return $this->renderOrFallback(
             'save',
             [
-                'name' => $this->name,
                 'model' => $form,
                 'entity' => $entity,
             ]
@@ -135,7 +132,6 @@ class CrudController extends Controller
         return $this->renderOrFallback(
             'delete',
             [
-                'name' => $this->name,
                 'entity' => $entity,
             ]
         );

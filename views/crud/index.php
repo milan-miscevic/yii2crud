@@ -9,6 +9,8 @@ use yii\helpers\Html;
 use yii\helpers\Inflector;
 use yii\helpers\Url;
 
+$name = $this->params['crud']['name'];
+
 $this->title = Inflector::camelize($name);
 $this->params['breadcrumbs'][] = $this->title;
 
