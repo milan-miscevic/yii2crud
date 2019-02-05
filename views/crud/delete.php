@@ -14,17 +14,26 @@ $this->params['breadcrumbs'][] = $entity->identifier;
 
 ?>
 
-<div>
-    <?php $form = ActiveForm::begin(); ?>
+<?php $form = ActiveForm::begin(); ?>
 
-        Delete <?= $entity->identifier ?>?
-
-        <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Yes', ['class' => 'btn btn-danger', 'name' => 'yes-button', 'value' => 'yes']) ?>
-                <?= Html::submitButton('No', ['class' => 'btn btn-primary', 'name' => 'no-button', 'value' => 'no']) ?>
-            </div>
+    <div class="row">
+        <div class="col-lg-12">
+            Delete <?= $entity->identifier ?>?
         </div>
+    </div>
 
-    <?php ActiveForm::end(); ?>
-</div>
+    <div class="row">
+        <div class="col-lg-12">
+            &nbsp;
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-lg-12">
+            <?= Html::submitButton('Yes', ['class' => 'btn btn-danger', 'name' => 'yes-button', 'value' => 'yes']) ?>
+            <?= Html::submitButton('No', ['class' => 'btn btn-primary', 'name' => 'no-button', 'value' => 'no']) ?>
+        </div>
+    </div>
+
+<?php ActiveForm::end(); ?>
+
