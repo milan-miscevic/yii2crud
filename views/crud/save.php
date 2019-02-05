@@ -19,8 +19,8 @@ $this->params['breadcrumbs'][] = isset($entity) ? $entity->identifier : 'New';
         'id' => 'save-form',
         'layout' => 'horizontal',
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
+            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
+            'labelOptions' => ['class' => 'col-lg-2 control-label'],
         ],
     ]); ?>
 
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = isset($entity) ? $entity->identifier : 'New';
         ?>
 
         <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
+            <div class="col-lg-offset-2 col-lg-10">
                 <?= Html::submitButton('Save', ['class' => 'btn btn-primary']) ?>
             </div>
         </div>
