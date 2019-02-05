@@ -11,7 +11,7 @@ use yii\helpers\Url;
 
 $name = $this->params['crud']['name'];
 
-$this->title = Inflector::camelize($name);
+$this->title = Inflector::camel2words($name);
 $this->params['breadcrumbs'][] = $this->title;
 
 $defaultProviderConfig = [

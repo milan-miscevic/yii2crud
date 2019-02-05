@@ -8,7 +8,7 @@ use yii\helpers\Inflector;
 
 $name = $this->params['crud']['name'];
 
-$this->title = Inflector::camelize($name);
+$this->title = Inflector::camel2words($name);
 $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ["//{$name}"]];
 $this->params['breadcrumbs'][] = isset($entity) ? $entity->identifier : 'New';
 
