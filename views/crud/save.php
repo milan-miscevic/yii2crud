@@ -25,8 +25,15 @@ $this->params['breadcrumbs'][] = isset($entity) ? $entity->identifier : 'New';
     ]); ?>
 
         <?php
-            foreach($model->getAttributes() as $key => $attribute) {
-                echo $form->field($model, $key)->textInput(['autofocus' => true]);
+            foreach($model->getAttributes() as $field => $value) {
+                $input = $this->params['crud']['form'][$field]['input'] ?? null;
+                $config = $this->params['crud']['form'][$field]['config'] ?? null;
+
+                if (isset($input, $config)) {
+                    echo call_user_func_array(array($form->field($model, $field), $input), $config);
+                } else {
+                    echo $form->field($model, $field)->textInput(['autofocus' => true]);
+                }
             }
         ?>
 
