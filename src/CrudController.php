@@ -137,14 +137,14 @@ class CrudController extends Controller
         );
     }
 
-    private function createNewForm()
+    protected function createNewForm()
     {
         $formClass = 'app\\form\\' . Inflector::camelize($this->name);
 
         return new $formClass();
     }
 
-    private function renderOrFallback($view, $params)
+    protected function renderOrFallback($view, $params)
     {
         try {
             return $this->render("//{$this->name}/{$view}", $params);
