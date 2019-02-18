@@ -62,7 +62,7 @@ class CrudController extends Controller
     {
         $form = $this->createNewForm();
 
-        if ($form->load(Yii::$app->request->post())) {
+        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             $data = $form->getAttributes();
             $entity = $this->service->createNewEntity();
             $entity->setAttributes($data, false);
@@ -90,7 +90,7 @@ class CrudController extends Controller
         }
 
         if (Yii::$app->request->isPost) {
-            if ($form->load(Yii::$app->request->post())) {
+            if ($form->load(Yii::$app->request->post()) && $form->validate()) {
                 $data = $form->getAttributes();
                 $entity->setAttributes($data, false);
                 $this->service->edit($entity);
