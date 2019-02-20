@@ -7,6 +7,7 @@ use mmm\yii2crud\exception\NotFound;
 use yii\base\ViewNotFoundException;
 use yii\helpers\Inflector;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class CrudController extends Controller
 {
@@ -47,7 +48,7 @@ class CrudController extends Controller
             $id = Yii::$app->request->get('id');
             $entity = $this->service->selectOne($id);
         } catch (NotFound $ex) {
-            throw new \yii\web\NotFoundHttpException();
+            throw new NotFoundHttpException();
         }
 
         return $this->renderOrFallback(
@@ -86,7 +87,7 @@ class CrudController extends Controller
         try {
             $entity = $this->service->selectOne($id);
         } catch (NotFound $ex) {
-            throw new \yii\web\NotFoundHttpException();
+            throw new NotFoundHttpException();
         }
 
         if (Yii::$app->request->isPost) {
@@ -116,7 +117,7 @@ class CrudController extends Controller
         try {
             $entity = $this->service->selectOne($id);
         } catch (NotFound $ex) {
-            throw new \yii\web\NotFoundHttpException();
+            throw new NotFoundHttpException();
         }
 
         if (Yii::$app->request->isPost) {
