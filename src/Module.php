@@ -3,6 +3,7 @@
 namespace mmm\yii2crud;
 
 use Yii;
+use mmm\yii2crud\CrudService;
 use yii\base\BootstrapInterface;
 use yii\base\Module as YiiModule;
 use yii\helpers\Inflector;
@@ -10,6 +11,7 @@ use yii\helpers\Inflector;
 class Module extends YiiModule implements BootstrapInterface
 {
     private $cruds;
+    private $namespaces;
 
     public function bootstrap($app)
     {
@@ -27,11 +29,31 @@ class Module extends YiiModule implements BootstrapInterface
         parent::init();
 
         $this->setViewPath($this->getBasePath() . '\\..\\views\\');
-        Yii::$container->set('CrudService', 'mmm\\yii2crud\\CrudService');
+
+        Yii::$container->set('CrudService', function($container, $params, $config) {
+            $name = Inflector::camelize($params['0']);
+            $serviceClass = "{$this->namespaces['service']}\\{$name}";
+            $activeRecordClass = "{$this->namespaces['models']}\\{$name}";
+            if (class_exists($serviceClass)) {
+                return new $serviceClass($activeRecordClass);
+            } else {
+                return new CrudService($activeRecordClass);
+            }
+        });
+
+        Yii::$container->set('CrudForm', function($container, $params, $config) {
+            $formClass = $this->namespaces['form'] . '\\' . Inflector::camelize($params['0']);
+            return new $formClass;
+        });
     }
 
     public function setCruds($cruds)
     {
         $this->cruds = $cruds;
+    }
+
+    public function setNamespaces($namespaces)
+    {
+        $this->namespaces = $namespaces;
     }
 }

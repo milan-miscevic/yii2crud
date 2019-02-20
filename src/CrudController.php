@@ -25,7 +25,7 @@ class CrudController extends Controller
 
     public function actionIndex()
     {
-        $form = $this->createNewForm();
+        $form = Yii::$container->get('CrudForm', [$this->name]);
         $entities = $this->service->select();
 
         if ($form->load(Yii::$app->request->getQueryParams())) {
@@ -60,7 +60,7 @@ class CrudController extends Controller
 
     public function actionAdd()
     {
-        $form = $this->createNewForm();
+        $form = Yii::$container->get('CrudForm', [$this->name]);
 
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             $data = $form->getAttributes();
@@ -81,7 +81,7 @@ class CrudController extends Controller
     public function actionEdit()
     {
         $id = Yii::$app->request->get('id');
-        $form = $this->createNewForm();
+        $form = Yii::$container->get('CrudForm', [$this->name]);
 
         try {
             $entity = $this->service->selectOne($id);
@@ -135,13 +135,6 @@ class CrudController extends Controller
                 'entity' => $entity,
             ]
         );
-    }
-
-    protected function createNewForm()
-    {
-        $formClass = 'app\\form\\' . Inflector::camelize($this->name);
-
-        return new $formClass();
     }
 
     protected function renderOrFallback($view, $params)

@@ -9,9 +9,9 @@ class CrudService
 {
     private $activeRecordClass;
 
-    public function __construct($name)
+    public function __construct($activeRecordClass)
     {
-        $this->activeRecordClass = 'app\\models\\' . Inflector::camelize($name);
+        $this->activeRecordClass = $activeRecordClass;
     }
 
     public function createNewEntity()
