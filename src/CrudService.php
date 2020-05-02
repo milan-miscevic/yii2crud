@@ -3,7 +3,6 @@
 namespace mmm\yii2crud;
 
 use mmm\yii2crud\exception\EntityNotFound;
-use yii\helpers\Inflector;
 
 class CrudService
 {

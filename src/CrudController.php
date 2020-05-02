@@ -5,7 +5,6 @@ namespace mmm\yii2crud;
 use Yii;
 use mmm\yii2crud\exception\EntityNotFound;
 use yii\base\ViewNotFoundException;
-use yii\helpers\Inflector;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
