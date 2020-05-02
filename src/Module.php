@@ -3,6 +3,7 @@
 namespace mmm\yii2crud;
 
 use Yii;
+use mmm\yii2crud\CrudController;
 use mmm\yii2crud\CrudService;
 use yii\base\BootstrapInterface;
 use yii\base\Module as YiiModule;
@@ -18,7 +19,7 @@ class Module extends YiiModule implements BootstrapInterface
         foreach ($this->cruds as $crud) {
             $controllerClass = Yii::$app->controllerNamespace . '\\' . Inflector::camelize($crud) . 'Controller';
             Yii::$app->controllerMap[$crud] = [
-                'class' => class_exists($controllerClass) ? $controllerClass : 'mmm\\yii2crud\\CrudController',
+                'class' => class_exists($controllerClass) ? $controllerClass : CrudController::class,
                 'module' => $this,
             ];
         }
@@ -28,7 +29,7 @@ class Module extends YiiModule implements BootstrapInterface
     {
         parent::init();
 
-        $this->setViewPath($this->getBasePath() . '\\..\\views\\');
+        $this->setViewPath($this->getBasePath() . '//..//views//');
 
         Yii::$container->set('CrudService', function($container, $params, $config) {
             $name = Inflector::camelize($params['0']);
@@ -43,7 +44,7 @@ class Module extends YiiModule implements BootstrapInterface
 
         Yii::$container->set('CrudForm', function($container, $params, $config) {
             $formClass = $this->namespaces['form'] . '\\' . Inflector::camelize($params['0']);
-            return new $formClass;
+            return new $formClass();
         });
     }
 
