@@ -1,5 +1,6 @@
 {
     "name": "milan-miscevic/yii2crud",
+    "description": "Basic CRUD facilities in the Yii2 framework",
     "autoload": {
         "psr-4": {
             "mmm\\yii2crud\\": "src"
