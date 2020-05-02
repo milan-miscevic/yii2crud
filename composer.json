@@ -1,6 +1,7 @@
 {
     "name": "milan-miscevic/yii2crud",
     "description": "Basic CRUD facilities in the Yii2 framework",
+    "keywords": ["yii2", "crud", "basic"],
     "license": "MIT",
     "autoload": {
         "psr-4": {
