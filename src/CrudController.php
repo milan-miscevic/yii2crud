@@ -3,7 +3,7 @@
 namespace mmm\yii2crud;
 
 use Yii;
-use mmm\yii2crud\exception\NotFound;
+use mmm\yii2crud\exception\EntityNotFound;
 use yii\base\ViewNotFoundException;
 use yii\helpers\Inflector;
 use yii\web\Controller;
@@ -47,7 +47,7 @@ class CrudController extends Controller
         try {
             $id = Yii::$app->request->get('id');
             $entity = $this->service->selectOne($id);
-        } catch (NotFound $ex) {
+        } catch (EntityNotFound $ex) {
             throw new NotFoundHttpException();
         }
 
@@ -86,7 +86,7 @@ class CrudController extends Controller
 
         try {
             $entity = $this->service->selectOne($id);
-        } catch (NotFound $ex) {
+        } catch (EntityNotFound $ex) {
             throw new NotFoundHttpException();
         }
 
@@ -116,7 +116,7 @@ class CrudController extends Controller
 
         try {
             $entity = $this->service->selectOne($id);
-        } catch (NotFound $ex) {
+        } catch (EntityNotFound $ex) {
             throw new NotFoundHttpException();
         }
 

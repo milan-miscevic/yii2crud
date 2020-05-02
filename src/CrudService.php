@@ -2,7 +2,7 @@
 
 namespace mmm\yii2crud;
 
-use mmm\yii2crud\exception\NotFound;
+use mmm\yii2crud\exception\EntityNotFound;
 use yii\helpers\Inflector;
 
 class CrudService
@@ -62,7 +62,7 @@ class CrudService
         $entity = call_user_func([$this->activeRecordClass, 'findOne'], $conditions);
 
         if ($entity === null) {
-            throw new NotFound();
+            throw new EntityNotFound();
         } else {
             return $entity;
         }
