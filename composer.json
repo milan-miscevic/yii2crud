@@ -1,8 +1,8 @@
 {
     "name": "milan-miscevic/yii2crud",
     "autoload": {
-        "classmap": [
-            "src/"
-        ]
+        "psr-4": {
+            "mmm\\yii2crud\\": "src"
+        }
     }
 }
