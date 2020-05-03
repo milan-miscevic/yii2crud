@@ -46,6 +46,10 @@ class Module extends YiiModule implements BootstrapInterface
             $formClass = $this->namespaces['form'] . '\\' . Inflector::camelize($params['0']);
             return new $formClass();
         });
+
+        Yii::$container->set('CrudFormSearch', function($container, $params, $config) {
+            return new CrudFormSearch($container->get('CrudForm', $params));
+        });
     }
 
     public function setCruds($cruds)

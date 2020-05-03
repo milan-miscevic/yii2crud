@@ -25,7 +25,7 @@ class CrudController extends Controller
 
     public function actionIndex()
     {
-        $form = Yii::$container->get('CrudForm', [$this->name]);
+        $form = Yii::$container->get('CrudFormSearch', [$this->name]);
         $entities = $this->service->select();
 
         if ($form->load(Yii::$app->request->getQueryParams())) {
