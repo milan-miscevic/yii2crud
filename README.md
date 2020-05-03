@@ -41,13 +41,13 @@ composer require milan-miscevic/yii2crud
 4. Create form and active record files:
 
 ```php
-// form/Article.php
+// form/ArticleForm.php
 
 namespace app\form;
 
 use mmm\yii2crud\CrudForm;
 
-class Article extends CrudForm
+class ArticleForm extends CrudForm
 {
     public $title;
     public $content;
