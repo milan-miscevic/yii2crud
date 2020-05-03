@@ -33,7 +33,7 @@ class Module extends YiiModule implements BootstrapInterface
 
         Yii::$container->set('CrudService', function($container, $params, $config) {
             $name = Inflector::camelize($params['0']);
-            $serviceClass = "{$this->namespaces['service']}\\{$name}";
+            $serviceClass = "{$this->namespaces['service']}\\{$name}Service";
             $activeRecordClass = "{$this->namespaces['models']}\\{$name}";
             if (class_exists($serviceClass)) {
                 return new $serviceClass($activeRecordClass);
@@ -43,7 +43,7 @@ class Module extends YiiModule implements BootstrapInterface
         });
 
         Yii::$container->set('CrudForm', function($container, $params, $config) {
-            $formClass = $this->namespaces['form'] . '\\' . Inflector::camelize($params['0']);
+            $formClass = $this->namespaces['form'] . '\\' . Inflector::camelize($params['0']) . 'Form';
             return new $formClass();
         });
 
