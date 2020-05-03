@@ -1,5 +1,7 @@
 # yii2crud
 
+[![Build Status](https://travis-ci.com/milan-miscevic/yii2crud.svg?branch=master)](https://travis-ci.com/milan-miscevic/yii2crud)
+
 Basic CRUD operations in the Yii2 framework.
 
 ## Installation
