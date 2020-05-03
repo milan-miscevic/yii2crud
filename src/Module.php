@@ -52,12 +52,12 @@ class Module extends YiiModule implements BootstrapInterface
         });
     }
 
-    public function setCruds($cruds)
+    public function setCruds(array $cruds): void
     {
         $this->cruds = $cruds;
     }
 
-    public function setNamespaces($namespaces)
+    public function setNamespaces(array $namespaces): void
     {
         $this->namespaces = $namespaces;
     }

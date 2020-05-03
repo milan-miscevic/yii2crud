@@ -3,22 +3,23 @@
 namespace mmm\yii2crud;
 
 use mmm\yii2crud\exception\EntityNotFound;
+use yii\db\ActiveQueryInterface;
 
 class CrudService
 {
     private $activeRecordClass;
 
-    public function __construct($activeRecordClass)
+    public function __construct(string $activeRecordClass)
     {
         $this->activeRecordClass = $activeRecordClass;
     }
 
-    public function createNewEntity()
+    public function createNewEntity(): CrudActiveRecord
     {
         return new $this->activeRecordClass();
     }
 
-    public function select($where = null, $queryParams = null)
+    public function select($where = null, ?QueryParams $queryParams = null): ActiveQueryInterface
     {
         $query = call_user_func([$this->activeRecordClass, 'find']);
 
@@ -33,7 +34,7 @@ class CrudService
         return $query;
     }
 
-    protected function assignQueryParams($query, $params)
+    protected function assignQueryParams(ActiveQueryInterface $query, QueryParams $params): ActiveQueryInterface
     {
         if ($params->orderBy !== null) {
             $query->orderBy($params->orderBy);
@@ -51,12 +52,12 @@ class CrudService
         return $query;
     }
 
-    public function selectAll($where = null, $params = null)
+    public function selectAll($where = null, ?QueryParams $params = null): array
     {
         return $this->select($where, $params)->all();
     }
 
-    public function selectOne($conditions)
+    public function selectOne($conditions): CrudActiveRecord
     {
         $entity = call_user_func([$this->activeRecordClass, 'findOne'], $conditions);
 
@@ -67,17 +68,17 @@ class CrudService
         }
     }
 
-    public function add($entity)
+    public function add(CrudActiveRecord $entity): bool
     {
         return $entity->save();
     }
 
-    public function edit($entity)
+    public function edit(CrudActiveRecord $entity): bool
     {
         return $entity->save();
     }
 
-    public function delete($entity)
+    public function delete(CrudActiveRecord $entity)
     {
         return $entity->delete();
     }
