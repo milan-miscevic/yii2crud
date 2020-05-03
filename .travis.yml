@@ -4,3 +4,6 @@ php:
   - '7.2'
   - '7.3'
   - '7.4'
+
+install:
+  - composer update --dev --prefer-dist --no-interaction
