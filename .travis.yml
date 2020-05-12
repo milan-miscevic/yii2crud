@@ -6,4 +6,4 @@ php:
   - '7.4'
 
 install:
-  - composer update --dev --prefer-dist --no-interaction
+  - composer install --prefer-dist --no-interaction

@@ -1,25 +1,38 @@
 {
     "name": "milan-miscevic/yii2crud",
     "description": "Basic CRUD operations in the Yii2 framework",
-    "keywords": ["yii2", "crud", "basic"],
+    "type": "library",
+    "keywords": ["yii2", "crud", "basic", "module"],
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "mmm\\yii2crud\\": "src"
-        }
-    },
     "require": {
-        "php": ">=7.2.0",
+        "php": "^7.2",
         "yiisoft/yii2": "^2.0.13"
     },
     "require-dev": {
+        "phpstan/phpstan": "^0.12",
         "phpunit/phpunit": "^8"
+    },
+    "autoload": {
+        "psr-4": {
+            "mmm\\yii2crud\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "mmm\\yii2crudtest\\": "tests/"
+        }
     },
     "config": {
         "process-timeout": 1800,
         "fxp-asset": {
             "enabled": false
         }
+    },
+    "scripts": {
+        "coverage": "phpunit --coverage-text",
+        "fix": "php-cs-fixer fix",
+        "stan": "phpstan analyse",
+        "test": "phpunit"
     },
     "repositories": [
         {
