@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace mmm\yii2crud;
 
 use mmm\yii2crud\exception\EntityNotFound;
+use yii\db\ActiveQuery;
 use yii\db\ActiveQueryInterface;
 
 class CrudService
 {
+    /** @var string */
     private $activeRecordClass;
 
     public function __construct(string $activeRecordClass)
@@ -16,13 +18,20 @@ class CrudService
         $this->activeRecordClass = $activeRecordClass;
     }
 
+    /**
+     * @return CrudActiveRecord
+     */
     public function createNewEntity(): CrudActiveRecord
     {
         return new $this->activeRecordClass();
     }
 
+    /**
+     * @param ?ActiveQuery $where
+     */
     public function select($where = null, ?QueryParams $queryParams = null): ActiveQueryInterface
     {
+        /** @var ActiveQuery */
         $query = call_user_func([$this->activeRecordClass, 'find']);
 
         if ($where !== null) {
@@ -54,11 +63,17 @@ class CrudService
         return $query;
     }
 
+    /**
+     * @param ?ActiveQuery $where
+     */
     public function selectAll($where = null, ?QueryParams $params = null): array
     {
         return $this->select($where, $params)->all();
     }
 
+    /**
+     * @param mixed $conditions
+     */
     public function selectOne($conditions): CrudActiveRecord
     {
         $entity = call_user_func([$this->activeRecordClass, 'findOne'], $conditions);
@@ -80,6 +95,9 @@ class CrudService
         return $entity->save();
     }
 
+    /**
+     * @return int|false
+     */
     public function delete(CrudActiveRecord $entity)
     {
         return $entity->delete();

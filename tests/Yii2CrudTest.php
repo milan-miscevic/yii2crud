@@ -9,6 +9,9 @@ use mmm\yii2crud\CrudActiveRecord;
 
 class Yii2CrudTest extends TestCase
 {
+    /**
+     * @return void
+     */
     public function testCreateNewEntity()
     {
         $class = CrudActiveRecord::class;

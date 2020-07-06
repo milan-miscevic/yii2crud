@@ -9,12 +9,19 @@ use mmm\yii2crud\exception\EntityNotFound;
 use yii\base\ViewNotFoundException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 class CrudController extends Controller
 {
+    /** @var string */
     protected $name;
+
+    /** @var CrudService */
     protected $service;
 
+    /**
+     * @return void
+     */
     public function init()
     {
         parent::init();
@@ -25,6 +32,9 @@ class CrudController extends Controller
         $this->service = Yii::$container->get('CrudService', [$this->name]);
     }
 
+    /**
+     * @return string
+     */
     public function actionIndex()
     {
         $form = Yii::$container->get('CrudFormSearch', [$this->name]);
@@ -51,6 +61,10 @@ class CrudController extends Controller
         );
     }
 
+    /**
+     * @return string
+     * @throws NotFoundHttpException
+     */
     public function actionView()
     {
         try {
@@ -68,6 +82,9 @@ class CrudController extends Controller
         );
     }
 
+    /**
+     * @return Response|string
+     */
     public function actionAdd()
     {
         $form = Yii::$container->get('CrudForm', [$this->name]);
@@ -88,6 +105,10 @@ class CrudController extends Controller
         );
     }
 
+    /**
+     * @return Response|string
+     * @throws NotFoundHttpException
+     */
     public function actionEdit()
     {
         $id = Yii::$app->request->get('id');
@@ -119,6 +140,10 @@ class CrudController extends Controller
         );
     }
 
+    /**
+     * @return Response|string
+     * @throws NotFoundHttpException
+     */
     public function actionDelete()
     {
         $id = Yii::$app->request->get('id');
@@ -147,6 +172,11 @@ class CrudController extends Controller
         );
     }
 
+    /**
+     * @param string $view
+     * @param array<string, mixed> $params
+     * @return string
+     */
     protected function renderOrFallback($view, $params)
     {
         try {

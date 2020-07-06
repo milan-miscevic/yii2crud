@@ -11,9 +11,15 @@ use yii\helpers\Inflector;
 
 class Module extends YiiModule implements BootstrapInterface
 {
+    /** @var string[] */
     private $cruds;
+
+    /** @var array<string, string> */
     private $namespaces;
 
+    /**
+     * @return void
+     */
     public function bootstrap($app)
     {
         foreach ($this->cruds as $crud) {
@@ -25,6 +31,9 @@ class Module extends YiiModule implements BootstrapInterface
         }
     }
 
+    /**
+     * @return void
+     */
     public function init()
     {
         parent::init();
@@ -52,11 +61,17 @@ class Module extends YiiModule implements BootstrapInterface
         });
     }
 
+    /**
+     * @param string[] $cruds
+     */
     public function setCruds(array $cruds): void
     {
         $this->cruds = $cruds;
     }
 
+    /**
+     * @param array<string, string> $namespaces
+     */
     public function setNamespaces(array $namespaces): void
     {
         $this->namespaces = $namespaces;
