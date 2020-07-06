@@ -4,3 +4,6 @@ parameters:
         - src
         - tests
         - views
+    ignoreErrors:
+        - '/^Access to static property \$app on an unknown class Yii\.$/'
+        - '/^Access to static property \$container on an unknown class Yii\.$/'
