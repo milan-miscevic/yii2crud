@@ -7,3 +7,8 @@ parameters:
     ignoreErrors:
         - '/^Access to static property \$app on an unknown class Yii\.$/'
         - '/^Access to static property \$container on an unknown class Yii\.$/'
+        - '/^Method [a-zA-Z0-9\\]+::[a-zA-Z0-9_]+\(\) has parameter \$[a-zA-Z0-9]+ with no value type specified in iterable type [a-zA-Z0-9\\]+\.$/'
+        - '/^Method [a-zA-Z0-9\\]+::[a-zA-Z0-9_]+\(\) invoked with [0-9]+ parameter[s]{0,1}, [0-9]+ required\.$/'
+        - '/^Method [a-zA-Z0-9\\]+::[a-zA-Z0-9_]+\(\) return type has no value type specified in iterable type [a-zA-Z0-9\\]+\.$/'
+        - '/^Parameter #1 \$function of function call_user_func expects callable\(\): mixed, array\(string, ''find[a-zA-Z]*''\) given\.$/'
+        - '/^Property [a-zA-Z0-9\\]+::\$[a-zA-Z0-9]+ type has no value type specified in iterable type [a-zA-Z0-9\\]+\.$/'
