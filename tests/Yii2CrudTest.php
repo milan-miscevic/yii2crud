@@ -6,6 +6,7 @@ namespace mmmtest\yii2crud;
 
 use PHPUnit\Framework\TestCase;
 use mmm\yii2crud\CrudActiveRecord;
+use mmm\yii2crud\CrudService;
 
 class Yii2CrudTest extends TestCase
 {
@@ -16,7 +17,7 @@ class Yii2CrudTest extends TestCase
     {
         $class = CrudActiveRecord::class;
 
-        $service = new \mmm\yii2crud\CrudService($class);
+        $service = new CrudService($class);
 
         $this->assertInstanceOf($class, $service->createNewEntity());
     }

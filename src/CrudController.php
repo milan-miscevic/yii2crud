@@ -41,8 +41,6 @@ class CrudController extends Controller
         $entities = $this->service->select();
 
         if ($form->load(Yii::$app->request->getQueryParams())) {
-            $attributes = [];
-
             foreach ($form->getAttributes() as $field => $value) {
                 if (is_numeric($value)) {
                     $entities->andWhere([$field => $value]);
