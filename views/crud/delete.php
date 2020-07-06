@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-/* @var $this yii\web\View */
-
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Inflector;
+use yii\web\View;
+
+/** @var View $this */
 
 $name = $this->params['crud']['name'];
 

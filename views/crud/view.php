@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-/* @var $this yii\web\View */
-
 use yii\helpers\Inflector;
 use yii\helpers\Url;
+use yii\web\View;
 use yii\widgets\DetailView;
+
+/** @var View $this */
 
 $name = $this->params['crud']['name'];
 

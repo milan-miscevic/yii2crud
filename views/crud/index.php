@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-/* @var $this yii\web\View */
-
 use yii\data\ActiveDataProvider;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Inflector;
 use yii\helpers\Url;
+use yii\web\View;
+
+/** @var View $this */
 
 $name = $this->params['crud']['name'];
 
