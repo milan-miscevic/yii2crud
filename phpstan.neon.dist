@@ -11,4 +11,6 @@ parameters:
         - '/^Method [a-zA-Z0-9\\]+::[a-zA-Z0-9_]+\(\) invoked with [0-9]+ parameter[s]{0,1}, [0-9]+ required\.$/'
         - '/^Method [a-zA-Z0-9\\]+::[a-zA-Z0-9_]+\(\) return type has no value type specified in iterable type [a-zA-Z0-9\\]+\.$/'
         - '/^Parameter #1 \$function of function call_user_func expects callable\(\): mixed, array\(string, ''find[a-zA-Z]*''\) given\.$/'
+        - '/^Parameter #1 \$function of function call_user_func_array expects callable\(\): mixed, array\(yii\\bootstrap\\ActiveField, mixed\) given\.$/'
         - '/^Property [a-zA-Z0-9\\]+::\$[a-zA-Z0-9]+ type has no value type specified in iterable type [a-zA-Z0-9\\]+\.$/'
+        - '/^Variable \$[a-zA-Z0-9]+ might not be defined\.$/'
