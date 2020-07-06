@@ -38,7 +38,7 @@ $defaultGridConfig = [
     'dataProvider' => $provider,
     'filterModel' => $form,
     'tableOptions' => [
-        'class' => 'table table-striped table-bordered table-hover table-condensed'
+        'class' => 'table table-striped table-bordered table-hover table-condensed',
     ],
 ];
 

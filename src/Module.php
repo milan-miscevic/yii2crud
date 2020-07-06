@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace mmm\yii2crud;
 
 use Yii;
-use mmm\yii2crud\CrudController;
-use mmm\yii2crud\CrudService;
 use yii\base\BootstrapInterface;
 use yii\base\Module as YiiModule;
 use yii\helpers\Inflector;
