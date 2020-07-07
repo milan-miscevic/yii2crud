@@ -29,7 +29,7 @@ class CrudController extends Controller
         $this->name = $this->id;
         $this->getView()->params['crud']['name'] = $this->id;
         $this->id = 'crud';
-        $this->service = Yii::$container->get('CrudService', [$this->name]);
+        $this->service = Yii::$container->get(CrudService::class, [$this->name]);
     }
 
     /**
@@ -37,7 +37,7 @@ class CrudController extends Controller
      */
     public function actionIndex()
     {
-        $form = Yii::$container->get('CrudFormSearch', [$this->name]);
+        $form = Yii::$container->get(CrudFormSearch::class, [$this->name]);
         $entities = $this->service->select();
 
         if ($form->load(Yii::$app->request->getQueryParams())) {
@@ -85,7 +85,7 @@ class CrudController extends Controller
      */
     public function actionAdd()
     {
-        $form = Yii::$container->get('CrudForm', [$this->name]);
+        $form = Yii::$container->get(CrudForm::class, [$this->name]);
 
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             $data = $form->getAttributes();
@@ -110,7 +110,7 @@ class CrudController extends Controller
     public function actionEdit()
     {
         $id = Yii::$app->request->get('id');
-        $form = Yii::$container->get('CrudForm', [$this->name]);
+        $form = Yii::$container->get(CrudForm::class, [$this->name]);
 
         try {
             $entity = $this->service->selectOne($id);

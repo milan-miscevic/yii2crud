@@ -40,7 +40,7 @@ class Module extends YiiModule implements BootstrapInterface
 
         $this->setViewPath($this->getBasePath() . '//..//views//');
 
-        Yii::$container->set('CrudService', function ($container, $params, $config) {
+        Yii::$container->set(CrudService::class, function ($container, $params, $config) {
             $name = Inflector::camelize($params['0']);
             $serviceClass = "{$this->namespaces['service']}\\{$name}Service";
             $activeRecordClass = "{$this->namespaces['models']}\\{$name}";
@@ -51,13 +51,13 @@ class Module extends YiiModule implements BootstrapInterface
             }
         });
 
-        Yii::$container->set('CrudForm', function ($container, $params, $config) {
+        Yii::$container->set(CrudForm::class, function ($container, $params, $config) {
             $formClass = $this->namespaces['form'] . '\\' . Inflector::camelize($params['0']) . 'Form';
             return new $formClass();
         });
 
-        Yii::$container->set('CrudFormSearch', function ($container, $params, $config) {
-            return new CrudFormSearch($container->get('CrudForm', $params));
+        Yii::$container->set(CrudFormSearch::class, function ($container, $params, $config) {
+            return new CrudFormSearch($container->get(CrudForm::class, $params));
         });
     }
 
