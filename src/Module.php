@@ -75,5 +75,11 @@ class Module extends YiiModule implements BootstrapInterface
     public function setNamespaces(array $namespaces): void
     {
         $this->namespaces = $namespaces;
+
+        foreach (['form', 'models', 'service'] as $name) {
+            if (!isset($this->namespaces[$name])) {
+                $this->namespaces[$name] = "app\\{$name}";
+            }
+        }
     }
 }
