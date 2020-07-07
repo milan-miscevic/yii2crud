@@ -27,7 +27,7 @@ composer require milan-miscevic/yii2crud
 'modules' => [
     // ...
     'yii2crud' => [
-        'class' => 'mmm\yii2crud\Module',
+        'class' => \mmm\yii2crud\Module::class,
         'cruds' => [
             'article',
         ],
