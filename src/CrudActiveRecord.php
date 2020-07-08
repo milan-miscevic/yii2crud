@@ -13,6 +13,6 @@ class CrudActiveRecord extends ActiveRecord
      */
     public function getIdentifier()
     {
-        return $this->name ?? $this->getPrimaryKey();
+        return $this->name ?? $this->id;
     }
 }
