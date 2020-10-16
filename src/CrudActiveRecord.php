@@ -6,10 +6,19 @@ namespace mmm\yii2crud;
 
 use yii\db\ActiveRecord;
 
+/**
+ * @property int $id
+ */
 class CrudActiveRecord extends ActiveRecord
 {
     public function getIdentifier(): string
     {
-        return $this->name ?? $this->id;
+        /**
+         * @var mixed
+         * @phpstan-ignore-next-line
+         */
+        $identifier = $this->name ?? $this->id;
+
+        return (string) $identifier;
     }
 }
