@@ -17,13 +17,14 @@
     ],
     "require": {
         "php": "^7.2",
-        "yiisoft/yii2": "^2.0.13",
-        "yiisoft/yii2-bootstrap": "^2.0"
+        "yiisoft/yii2": "^2",
+        "yiisoft/yii2-bootstrap": "^2"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2",
         "phpstan/phpstan": "^0.12",
-        "phpunit/phpunit": "^8"
+        "phpunit/phpunit": "^8",
+        "vimeo/psalm": "^3"
     },
     "config": {
         "fxp-asset": {
@@ -52,6 +53,11 @@
         "coverage": "phpunit --coverage-text",
         "fix": "php-cs-fixer fix",
         "phpstan": "phpstan analyse",
+        "psalm": "psalm --show-info=true",
+        "sa": [
+            "@phpstan",
+            "@psalm"
+        ],
         "test": "phpunit"
     }
 }
