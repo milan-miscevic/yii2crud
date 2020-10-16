@@ -1,7 +1,7 @@
 {
     "name": "milan-miscevic/yii2crud",
-    "description": "Basic CRUD operations in the Yii2 framework",
     "type": "library",
+    "description": "Basic CRUD operations in the Yii2 framework",
     "keywords": [
         "yii2",
         "crud",
@@ -25,6 +25,13 @@
         "phpstan/phpstan": "^0.12",
         "phpunit/phpunit": "^8"
     },
+    "config": {
+        "fxp-asset": {
+            "enabled": false
+        },
+        "process-timeout": 1800,
+        "sort-packages": true
+    },
     "autoload": {
         "psr-4": {
             "mmm\\yii2crud\\": "src/"
@@ -35,23 +42,16 @@
             "mmm\\yii2crud\\tests\\": "tests/"
         }
     },
-    "config": {
-        "sort-packages": true,
-        "process-timeout": 1800,
-        "fxp-asset": {
-            "enabled": false
-        }
-    },
-    "scripts": {
-        "coverage": "phpunit --coverage-text",
-        "fix": "php-cs-fixer fix",
-        "phpstan": "phpstan analyse",
-        "test": "phpunit"
-    },
     "repositories": [
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
         }
-    ]
+    ],
+    "scripts": {
+        "coverage": "phpunit --coverage-text",
+        "fix": "php-cs-fixer fix",
+        "phpstan": "phpstan analyse",
+        "test": "phpunit"
+    }
 }
