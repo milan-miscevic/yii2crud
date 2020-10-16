@@ -17,10 +17,7 @@ class Module extends YiiModule implements BootstrapInterface
     /** @var array<string, string> */
     private $namespaces;
 
-    /**
-     * @return void
-     */
-    public function bootstrap($app)
+    public function bootstrap($app): void
     {
         foreach ($this->cruds as $crud) {
             $controllerClass = Yii::$app->controllerNamespace . '\\' . Inflector::camelize($crud) . 'Controller';
@@ -31,10 +28,7 @@ class Module extends YiiModule implements BootstrapInterface
         }
     }
 
-    /**
-     * @return void
-     */
-    public function init()
+    public function init(): void
     {
         parent::init();
 

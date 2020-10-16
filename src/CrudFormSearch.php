@@ -14,18 +14,12 @@ class CrudFormSearch extends Model
     /** @var string */
     public $id;
 
-    /**
-     * @param CrudForm $form
-     */
     public function __construct(CrudForm $form)
     {
         $this->form = $form;
     }
 
-    /**
-     * @return void
-     */
-    public function __set($name, $value)
+    public function __set($name, $value): void
     {
         $this->form->$name = $value;
     }
@@ -36,7 +30,7 @@ class CrudFormSearch extends Model
     }
 
     /**
-     * @return String[]
+     * @return string[]
      */
     public function attributes()
     {
@@ -46,7 +40,7 @@ class CrudFormSearch extends Model
         return $attributes;
     }
 
-    public function formName()
+    public function formName(): string
     {
         $reflector = new \ReflectionClass($this->form);
 

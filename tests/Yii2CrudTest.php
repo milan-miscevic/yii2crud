@@ -10,10 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class Yii2CrudTest extends TestCase
 {
-    /**
-     * @return void
-     */
-    public function testCreateNewEntity()
+    public function testCreateNewEntity(): void
     {
         $class = CrudActiveRecord::class;
 

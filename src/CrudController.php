@@ -19,10 +19,7 @@ class CrudController extends Controller
     /** @var CrudService */
     protected $service;
 
-    /**
-     * @return void
-     */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -32,10 +29,7 @@ class CrudController extends Controller
         $this->service = Yii::$container->get(CrudService::class, [$this->name]);
     }
 
-    /**
-     * @return string
-     */
-    public function actionIndex()
+    public function actionIndex(): string
     {
         $form = Yii::$container->get(CrudFormSearch::class, [$this->name]);
         $entities = $this->service->select();
@@ -59,11 +53,7 @@ class CrudController extends Controller
         );
     }
 
-    /**
-     * @return string
-     * @throws NotFoundHttpException
-     */
-    public function actionView()
+    public function actionView(): string
     {
         try {
             $id = Yii::$app->request->get('id');
@@ -105,7 +95,6 @@ class CrudController extends Controller
 
     /**
      * @return Response|string
-     * @throws NotFoundHttpException
      */
     public function actionEdit()
     {
@@ -140,7 +129,6 @@ class CrudController extends Controller
 
     /**
      * @return Response|string
-     * @throws NotFoundHttpException
      */
     public function actionDelete()
     {
@@ -171,11 +159,9 @@ class CrudController extends Controller
     }
 
     /**
-     * @param string $view
      * @param array<string, mixed> $params
-     * @return string
      */
-    protected function renderOrFallback($view, $params)
+    protected function renderOrFallback(string $view, array $params): string
     {
         try {
             return $this->render("//{$this->name}/{$view}", $params);

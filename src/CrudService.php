@@ -18,18 +18,12 @@ class CrudService
         $this->activeRecordClass = $activeRecordClass;
     }
 
-    /**
-     * @return CrudActiveRecord
-     */
     public function createNewEntity(): CrudActiveRecord
     {
         return new $this->activeRecordClass();
     }
 
-    /**
-     * @param ?ActiveQuery $where
-     */
-    public function select($where = null, ?QueryParams $queryParams = null): ActiveQueryInterface
+    public function select(?ActiveQuery $where = null, ?QueryParams $queryParams = null): ActiveQueryInterface
     {
         /** @var ActiveQuery */
         $query = call_user_func([$this->activeRecordClass, 'find']);
@@ -63,10 +57,7 @@ class CrudService
         return $query;
     }
 
-    /**
-     * @param ?ActiveQuery $where
-     */
-    public function selectAll($where = null, ?QueryParams $params = null): array
+    public function selectAll(?ActiveQuery $where = null, ?QueryParams $params = null): array
     {
         return $this->select($where, $params)->all();
     }

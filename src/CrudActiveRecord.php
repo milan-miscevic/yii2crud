@@ -8,10 +8,7 @@ use yii\db\ActiveRecord;
 
 class CrudActiveRecord extends ActiveRecord
 {
-    /**
-     * @return string
-     */
-    public function getIdentifier()
+    public function getIdentifier(): string
     {
         return $this->name ?? $this->id;
     }
