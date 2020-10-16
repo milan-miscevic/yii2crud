@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace mmm\yii2crud;
 
-use Yii;
 use mmm\yii2crud\exception\EntityNotFound;
+use Yii;
 use yii\base\ViewNotFoundException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
