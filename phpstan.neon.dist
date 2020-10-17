@@ -6,3 +6,5 @@ parameters:
         - src
         - tests
         - views
+    ignoreErrors:
+        - '~Variable \$this might not be defined.~'
