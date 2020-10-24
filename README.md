@@ -1,12 +1,13 @@
 # yii2crud
 
+[![PDS Skeleton](https://img.shields.io/badge/pds-skeleton-blue.svg?style=flat-square)](https://github.com/php-pds/skeleton)
 [![Build Status](https://travis-ci.com/milan-miscevic/yii2crud.svg?branch=master)](https://travis-ci.com/milan-miscevic/yii2crud)
 
 Basic CRUD operations in the Yii2 framework.
 
 ## Installation
 
-1. Install the module via Composor:
+1. Install the module via Composer:
 
 ```bash
 composer require milan-miscevic/yii2crud
