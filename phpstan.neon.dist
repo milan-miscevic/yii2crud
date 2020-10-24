@@ -7,4 +7,13 @@ parameters:
         - tests
         - views
     ignoreErrors:
-        - '~Variable \$this might not be defined.~'
+        -
+            message: '~Variable \$entity might not be defined\.~'
+            path: views/*
+        -
+            message: '~Variable \$this might not be defined\.~'
+            path: views/*
+        - '/^Method [a-zA-Z0-9\\]+::[a-zA-Z0-9_]+\(\) has parameter \$[a-zA-Z0-9]+ with no value type specified in iterable type [a-zA-Z0-9\\]+\.$/'
+        - '/^Method [a-zA-Z0-9\\]+::[a-zA-Z0-9_]+\(\) return type has no value type specified in iterable type [a-zA-Z0-9\\]+\.$/'
+        - '/^Property [a-zA-Z0-9\\]+::\$[a-zA-Z0-9]+ type has no value type specified in iterable type [a-zA-Z0-9\\]+\.$/'
+        - '/^PHPDoc tag @var for variable \$[a-zA-Z0-9]+ has no value type specified in iterable type [a-zA-Z0-9\\]+\.$/'

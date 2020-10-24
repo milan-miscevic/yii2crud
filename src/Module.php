@@ -37,6 +37,7 @@ class Module extends YiiModule implements BootstrapInterface
         Yii::$container->set(CrudService::class, function ($container, $params, $config) {
             $name = Inflector::camelize($params['0']);
             $serviceClass = "{$this->namespaces['service']}\\{$name}Service";
+            /** @var class-string<CrudActiveRecord> $activeRecordClass */
             $activeRecordClass = "{$this->namespaces['models']}\\{$name}";
             if (class_exists($serviceClass)) {
                 return new $serviceClass($activeRecordClass);
