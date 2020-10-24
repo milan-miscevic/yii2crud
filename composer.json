@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": "^7.2",
-        "yiisoft/yii2": "^2",
+        "yiisoft/yii2": "^2.0.38",
         "yiisoft/yii2-bootstrap": "^2"
     },
     "require-dev": {
@@ -54,10 +54,6 @@
         "fix": "php-cs-fixer fix",
         "phpstan": "phpstan analyse",
         "psalm": "psalm --show-info=true",
-        "sa": [
-            "@phpstan",
-            "@psalm"
-        ],
         "test": "phpunit"
     }
 }
